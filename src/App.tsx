@@ -1,88 +1,26 @@
 /**
- * Project React Native App
- * Practice makes perfect
+ * App 컴포넌트
+ * Screens의 Navigator.tsx 적용, RandomUserDataProvider의 Props인 cache 설정
  *
  * @format
  * @flow strict-local
  */
 
-import React, {Fragment} from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import React from 'react';
+import {StatusBar} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-import Styled from 'styled-components/native';
-
-const ScrollView = Styled.ScrollView`
-  background-color: ${Colors.lighter};
-`;
-
-const Body = Styled.View`
-  background-color: ${Colors.white};
-`;
-
-const SectionContainer = Styled.View`
-  margin-top: 32px;
-  padding-horizontal: 24px;
-`;
-
-const SectionDescription = Styled.Text`
-  margin-top: 8px;
-  font-size: 18px;
-  font-weight: 400;
-  color: ${Colors.dark}
-`;
-
-const HighLight = Styled.Text`
-  font-weight: 700;
-`;
+import Navigator from '~/Screens/Navigator';
+import {RandomUserDataProvider} from '~/Context/RandomUserData';
 
 interface Props {}
 
 const App = ({}: Props) => {
   return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Header />
-          <Body>
-            <SectionContainer>
-              <SectionDescription>Step One</SectionDescription>
-              <SectionDescription>
-                Edit <HighLight>App.js</HighLight> ot change this screen and
-                then come back to see your edits.
-              </SectionDescription>
-            </SectionContainer>
-            <SectionContainer>
-              <SectionDescription>See your Changes</SectionDescription>
-              <SectionDescription>
-                <ReloadInstructions />
-              </SectionDescription>
-            </SectionContainer>
-            <SectionContainer>
-              <SectionDescription>Debug</SectionDescription>
-              <SectionDescription>
-                <DebugInstructions />
-              </SectionDescription>
-            </SectionContainer>
-            <SectionContainer>
-              <SectionDescription>Learn More</SectionDescription>
-              <SectionDescription>
-                Read the docs to discover what go do next:
-              </SectionDescription>
-            </SectionContainer>
-            <LearnMoreLinks />
-          </Body>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
+    <RandomUserDataProvider cache={true}>
+      <StatusBar barStyle="default">
+        <Navigator></Navigator>
+      </StatusBar>
+    </RandomUserDataProvider>
   );
 };
 
